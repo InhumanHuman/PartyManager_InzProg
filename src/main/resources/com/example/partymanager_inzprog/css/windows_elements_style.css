@@ -1,0 +1,41 @@
+/* button styling */
+
+.button
+{
+-fx-background-color : #5d6698;
+-fx-text-fill : #FFFFFF;
+}
+.button:hover
+{
+-fx-background-color : #5d6698;
+-fx-text-fill : #FFFFFF;
+}
+.button:pressed
+{
+-fx-background-color : #5d6698;
+-fx-text-fill : #FFFFFF;
+}
+
+/* VBox styling */
+
+.VBox
+{
+-fx-background-color : #363b59;
+}
+
+/* VBox styling */
+
+.Text
+{
+-fx-text-fill : #FFFFFF;
+}
+
+.HyperLink
+{
+-fx-background-color : #5d6698;
+-fx-text-fill : #FFFFFF;
+}
+
+.RadioButton {
+    -fx-background-color: #5d6698;
+}

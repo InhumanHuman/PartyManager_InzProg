@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" prefHeight="525.0" prefWidth="350.0" spacing="20.0" styleClass="VBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.partymanager_inzprog.Login">
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+   <children>
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@party_manager_logo.png" />
+         </image>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin></ImageView>
+      <Label fx:id="errorMessage" alignment="CENTER" textFill="RED" />
+      <Label styleClass="Text" stylesheets="@css/windows_elements_style.css" text="Login:" textAlignment="CENTER" />
+      <TextField fx:id="login" />
+      <Label styleClass="Text" stylesheets="@css/windows_elements_style.css" text="Hasło:" textAlignment="CENTER" />
+      <PasswordField fx:id="password" />
+      <Button fx:id="loginButton" onAction="#confirmLogin" stylesheets="@css/windows_elements_style.css" text="Zaloguj się" textFill="WHITE" />
+      <Label styleClass="Text" stylesheets="@css/windows_elements_style.css" text="Nie masz jeszcze konta?" />
+      <Hyperlink fx:id="reigsterHyperLink" onAction="#switchToRegisterEmployeeScreen" styleClass="HyperLink" stylesheets="@css/windows_elements_style.css" text="Zarejestruj się tutaj" textFill="#00b7ff" />
+   </children>
+   <stylesheets>
+      <URL value="@css/windows_elements_style.css" />
+      <URL value="@css/windows_elements_style.css" />
+   </stylesheets>
+</VBox>
