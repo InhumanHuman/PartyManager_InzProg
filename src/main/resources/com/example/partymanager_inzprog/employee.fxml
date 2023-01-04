@@ -10,14 +10,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="ScenePanelUser" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="344.0" prefWidth="678.0" spacing="20.0" styleClass="VBox" stylesheets="@../../../../../../../../Technologie%20Obiektowe/Projekt%20z%20Filipem%20Firma%20Transportowa/src/main/resources/transport/company/to_firma_transportowa/css/windows_elements_style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.partymanager_inzprog.Employee">
+<VBox fx:id="ScenePanelUser" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="344.0" prefWidth="678.0" spacing="20.0" styleClass="VBox" stylesheets="@css/windows_elements_style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.partymanager_inzprog.Employee">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../../Technologie%20Obiektowe/Projekt%20z%20Filipem%20Firma%20Transportowa/src/main/resources/transport/company/to_firma_transportowa/forklift-truck-icon-01-.png" />
+            <Image url="@party_manager_logo.png" />
          </image>
       </ImageView>
-      <Label stylesheets="@../../../../../../../../Technologie%20Obiektowe/Projekt%20z%20Filipem%20Firma%20Transportowa/src/main/resources/transport/company/to_firma_transportowa/css/label_style.css" text="Witaj! co chcesz dzisiaj zrobić?">
+      <Label stylesheets="@css/label_style.css" text="Witaj! co chcesz dzisiaj zrobić?">
          <font>
             <Font size="18.0" />
          </font>

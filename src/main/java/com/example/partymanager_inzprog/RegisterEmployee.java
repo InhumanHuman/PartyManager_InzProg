@@ -27,8 +27,6 @@ public class RegisterEmployee {
     @FXML
     private TextField id_number;
     @FXML
-    private TextField phone_number;
-    @FXML
     private TextField login;
     @FXML
     private PasswordField password;
@@ -44,8 +42,7 @@ public class RegisterEmployee {
         stage.setScene(scene);
         stage.show();
     }
-
-    public void registerNewEmployee(javafx.event.ActionEvent actionEvent) throws IOException {
+    public void registerNewEmployee(javafx.event.ActionEvent actionEvent){
 
         try {
             // testing if input fields are not empty
@@ -60,9 +57,6 @@ public class RegisterEmployee {
             }
             if(id_number.getText().equals("")) {
                 throw new Exception("Pole 'numer dowodu' nie może być puste");
-            }
-            if(phone_number.getText().equals("")) {
-                throw new Exception("Pole 'numer telefonu' nie może być puste");
             }
             if(login.getText().equals("")) {
                 throw new Exception("Pole 'login' nie może być puste");
@@ -84,27 +78,25 @@ public class RegisterEmployee {
             ResultSet resultSet = null;
 
             try {
-                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/transport_company_database", "root","root");
-                psCheckUserExists = connection.prepareStatement("SELECT * FROM uzytkownicy WHERE login = ? OR email = ? OR numer_dowodu = ? OR numer_telefonu = ?");
+                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/party_management_database", "root","root");
+                psCheckUserExists = connection.prepareStatement("SELECT * FROM users WHERE login = ? OR e_mail = ? OR id_number = ?");
                 psCheckUserExists.setString(1, login.getText());
                 psCheckUserExists.setString(2, e_mail.getText());
                 psCheckUserExists.setString(3, id_number.getText());
-                psCheckUserExists.setString(4, phone_number.getText());
                 resultSet = psCheckUserExists.executeQuery();
 
                 if(resultSet.isBeforeFirst()) {
                     throw new Exception("Uzytkownik o podanych danych juz istnieje");
                 }
                 else {
-                    psInsert = connection.prepareStatement("INSERT INTO uzytkownicy (numer_dowodu,numer_telefonu,imie,nazwisko,email,login,haslo,status) VALUES(?,?,?,?,?,?,?,?)");
+                    psInsert = connection.prepareStatement("INSERT INTO users (id_number,firstname,lastname,e_mail,login,password,status) VALUES(?,?,?,?,?,?,?)");
                     psInsert.setString(1, id_number.getText());
-                    psInsert.setString(2, phone_number.getText());
-                    psInsert.setString(3, firstname.getText());
-                    psInsert.setString(4, lastname.getText());
-                    psInsert.setString(5, e_mail.getText());
-                    psInsert.setString(6, login.getText());
-                    psInsert.setString(7, password.getText());
-                    psInsert.setString(8,"employee");
+                    psInsert.setString(2, firstname.getText());
+                    psInsert.setString(3, lastname.getText());
+                    psInsert.setString(4, e_mail.getText());
+                    psInsert.setString(5, login.getText());
+                    psInsert.setString(6, password.getText());
+                    psInsert.setString(7,"employee");
                     psInsert.executeUpdate();
                 }
             } catch(Exception e) {

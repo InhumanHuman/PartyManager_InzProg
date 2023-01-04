@@ -20,6 +20,19 @@ public class Employee {
     private VBox ScenePanelUser;
 
     @FXML
+    private TextField partyName;
+    @FXML
+    private TextField partyAddress;
+    @FXML
+    private DatePicker partyOpeningDate;
+    @FXML
+    private DatePicker partyClosingDate;
+    @FXML
+    private TextField priceOfTheParty;
+    @FXML
+    private  TextField availableEntries;
+
+    @FXML
     private Label errorMessage;
     @FXML
     private TextArea userMessage;
@@ -86,91 +99,92 @@ public class Employee {
         stage.setScene(scene);
         stage.show();
     }
-    public boolean askBeforeConfirmation(){
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Wysyłanie wiadomości");
-        alert.setHeaderText("Za chwilę wyślesz wiadomość do szefa.");
-        alert.setContentText("Czy na pewno chcesz kontynuować?");
-
-        if(alert.showAndWait().get() == ButtonType.OK) {
-            return true;
-        }
-        return false;
-    }
-
-    public void sendMailToBoss(javafx.event.ActionEvent actionEvent) {
-        if(!askBeforeConfirmation()) {
-            return;
-        }
-        if(userMessage.getText().equals("")) {
-            errorMessage.setText("Nie wpisałeś treści wiadomości.");
-            return;
-        }
-        if(messageTopic.getText().equals("")) {
-            errorMessage.setText("Nie podano tematu wiadomości.");
-            return;
-        }
-        Connection connection = null;
-        PreparedStatement psInsert = null;
-        PreparedStatement psSelect = null;
-        ResultSet resultSet = null;
+    public void registerNewParty(javafx.event.ActionEvent actionEvent){
         try {
-            int mssgID;
+            // testing if input fields are not empty
+            if (partyName.equals("")) {
+                throw new Exception("Pole 'nazwa imprezy' nie może być puste");
+            }
+            if (partyAddress.equals("")) {
+                throw new Exception("Pole 'adres' nie może być puste");
+            }
+            if (partyOpeningDate.getValue() == null) {
+                throw new Exception("Pole 'data rozpoczęcia' nie może być puste");
+            }
+            if (partyClosingDate.getValue() == null) {
+                throw new Exception("Pole 'data zakończenia' nie może być puste");
+            }
+            if (priceOfTheParty.equals("")) {
+                throw new Exception("Pole 'cena' nie może być puste");
+            }
+            if (availableEntries.equals("")) {
+                throw new Exception("Pole 'liczba dostępnych miejsc' nie może być puste");
+            }
+            if ((partyClosingDate.getValue()).isBefore((partyOpeningDate).getValue())) {
+                throw new Exception("Data zakończenia nie może być przed datą rozpoczęcia");
+            }
 
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/transport_company_database", "root","root");
-            psInsert = connection.prepareStatement("INSERT INTO wiadomosci (temat,tresc_wiadomosci,status) VALUES(?,?,?)");
-            psInsert.setString(1, messageTopic.getText());
-            psInsert.setString(2, userMessage.getText());
-            psInsert.setString(3, "nowa");
-            psInsert.executeUpdate();
+            // connecting to external database
+            Connection connection = null;
+            PreparedStatement psInsert = null;
+            PreparedStatement psCheckPartyExists = null;
+            ResultSet resultSet = null;
 
-            psSelect = connection.prepareStatement("SELECT id_wiadomosci FROM wiadomosci WHERE temat = ? ORDER BY id_wiadomosci DESC");
-            psSelect.setString(1,messageTopic.getText());
-            resultSet = psSelect.executeQuery();
-            resultSet.next();
-            mssgID = resultSet.getInt(1);
+            try {
+                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/party_management_database", "root", "root");
+                psCheckPartyExists = connection.prepareStatement("SELECT * FROM parties WHERE partyName = ?");
+                psCheckPartyExists.setString(1, partyName.getText());
+                resultSet = psCheckPartyExists.executeQuery();
 
-            psInsert = connection.prepareStatement("INSERT INTO wiadomosci_uzytkownicy (id_wiadomosci, id_uzytkownika) VALUES(?,?)");
-            psInsert.setString(1,Integer.toString(mssgID));
-            psInsert.setString(2,Integer.toString(CurrentUser.currentUserID));
-            psInsert.executeUpdate();
-
-        } catch(SQLException e) {
-            e.printStackTrace();
-        } finally {
-            if(connection!=null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
+                if (resultSet.isBeforeFirst()) {
+                    throw new Exception("Impreza o podanych danych juz istnieje");
+                } else {
+                    psInsert = connection.prepareStatement("INSERT INTO parties (partyName,partyAddress,partyOpeningDate,partyClosingDate,priceOfTheParty,availableEntries) VALUES(?,?,?,?,?,?)");
+                    psInsert.setString(1, partyName.getText());
+                    psInsert.setString(2, partyAddress.getText());
+                    psInsert.setString(3, String.valueOf(partyOpeningDate.getValue()));
+                    psInsert.setString(4, String.valueOf(partyClosingDate.getValue()));
+                    psInsert.setString(5, priceOfTheParty.getText());
+                    psInsert.setString(6, availableEntries.getText());
+                    psInsert.executeUpdate();
+                }
+            } catch (Exception e) {
+                throw new Exception(e.getMessage());
+            } finally {
+                if (resultSet != null) {
+                    try {
+                        resultSet.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (psCheckPartyExists != null) {
+                    try {
+                        psCheckPartyExists.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (psInsert != null) {
+                    try {
+                        psInsert.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (connection != null) {
+                    try {
+                        connection.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
-            if(psSelect!=null) {
-                try {
-                    psSelect.close();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-            if(psInsert!=null) {
-                try {
-                    psInsert.close();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-            if(resultSet!=null) {
-                try {
-                    resultSet.close();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }
-        try {
+            // switching back to employee screen
             this.goBackToEmployeeScreen(actionEvent);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        } catch(Exception e) {
+            errorMessage.setText(e.getMessage());
+            e.printStackTrace();
         }
     }
 }

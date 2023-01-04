@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="455.0" prefWidth="1019.0" styleClass="VBox" stylesheets="@css/windows_elements_style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.partymanager_inzprog.EmployeeRemoveParty">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="455.0" prefWidth="1019.0" styleClass="VBox" stylesheets="@css/windows_elements_style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.partymanager_inzprog.BossRemoveParty">
    <children>
       <HBox alignment="CENTER">
          <children>
@@ -39,7 +39,7 @@
                   <ChoiceBox fx:id="idChoiceBox" prefWidth="150.0" />
                   <Label fx:id="errorMessage" textFill="RED" />
                   <Button fx:id="cancelPartyButton" mnemonicParsing="false" onAction="#removeParty" text="Odwołaj imprezę" />
-                  <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#goBackToEmployeeScreen" text="Anuluj" />
+                  <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#goBackToBossScreen" text="Anuluj" />
                </children>
                <padding>
                   <Insets bottom="10.0" left="15.0" right="10.0" top="10.0" />

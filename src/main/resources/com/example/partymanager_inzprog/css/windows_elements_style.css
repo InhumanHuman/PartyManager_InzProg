@@ -39,3 +39,7 @@
 .RadioButton {
     -fx-background-color: #5d6698;
 }
+
+.scroll-pane {
+-fx-background-color : #363b59;
+}

@@ -1,54 +1,47 @@
 package com.example.partymanager_inzprog;
 
 public class UserData {
-    private Integer id_uzytkownika;
-    private String numer_dowodu;
-    private Integer numer_telefonu;
-    private String imie;
-    private String nazwisko;
-    private String email;
+    private Integer user_id;
+    private String firstname;
+    private String lastname;
+    private String e_mail;
+    private String id_number;
     private String login;
+    private String password;
     private String status;
 
-    public UserData(Integer id_uzytkownika, String numer_dowodu, Integer numer_telefonu, String imie, String nazwisko, String email, String login, String status) {
-        this.id_uzytkownika = id_uzytkownika;
-        this.numer_dowodu = numer_dowodu;
-        this.numer_telefonu = numer_telefonu;
-        this.imie = imie;
-        this.nazwisko = nazwisko;
-        this.email = email;
+    public UserData(Integer user_id, String firstname, String lastname, String e_mail, String id_number, String login, String password, String status) {
+        this.user_id = user_id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.e_mail = e_mail;
+        this.id_number = id_number;
         this.login = login;
+        this.password = password;
         this.status = status;
     }
 
-    public Integer getId_uzytkownika() {
-        return id_uzytkownika;
+    public Integer getUser_id() {
+        return user_id;
     }
-
-    public String getNumer_dowodu() {
-        return numer_dowodu;
+    public String getFirstname() {
+        return firstname;
     }
-
-    public Integer getNumer_telefonu() {
-        return numer_telefonu;
+    public String getLastname() {
+        return lastname;
     }
-
-    public String getImie() {
-        return imie;
+    public String getE_mail() {
+        return e_mail;
     }
-
-    public String getNazwisko() {
-        return nazwisko;
+    public String getId_number() {
+        return id_number;
     }
-
-    public String getEmail() {
-        return email;
-    }
-
     public String getLogin() {
         return login;
     }
-
+    public String getPassword() {
+        return password;
+    }
     public String getStatus() {
         return status;
     }

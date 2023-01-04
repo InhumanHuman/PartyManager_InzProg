@@ -30,7 +30,6 @@
       <TextField fx:id="lastname" promptText="nazwisko" />
       <TextField fx:id="e_mail" promptText="e-mail" />
       <TextField fx:id="id_number" promptText="numer dowodu" />
-      <TextField fx:id="phone_number" promptText="numer telefonu" />
       <TextField fx:id="login" promptText="login" />
       <PasswordField fx:id="password" promptText="hasło" />
       <PasswordField fx:id="confirmPassword" prefHeight="25.0" prefWidth="200.0" promptText="potwierdź hasło" />
