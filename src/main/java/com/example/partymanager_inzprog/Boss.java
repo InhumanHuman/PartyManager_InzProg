@@ -44,9 +44,9 @@ public class Boss {
     private TextField priceOfTheParty;
     @FXML
     private  TextField availableEntries;
-
     @FXML
-    private VBox ScenePanelUser;
+    private VBox ScenePanelBoss;
+
     @FXML
     private Label errorMessage;
     @FXML
@@ -75,7 +75,7 @@ public class Boss {
         alert.setContentText("Czy na pewno chcesz kontynuować?");
 
         if(alert.showAndWait().get() == ButtonType.OK) {
-            stage = (Stage) ScenePanelUser.getScene().getWindow();
+            stage = (Stage) ScenePanelBoss.getScene().getWindow();
             this.switchToLoginScreen(actionEvent);
         }
     }
@@ -94,21 +94,21 @@ public class Boss {
         stage.show();
     }
     public void switchToAddPartyScreen(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("employeeAddParty.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("bossAddParty.fxml"));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
     public void switchToRemovePartyScreen(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("employeeRemoveParty.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("bossRemoveParty.fxml"));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
     public void switchToMessagesScreen(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("employeeMessages.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("bossAnswerMessages.fxml"));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

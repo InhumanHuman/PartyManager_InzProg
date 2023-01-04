@@ -198,7 +198,7 @@ public class EmployeeChangePartyCredentials implements Initializable {
             }
             if(startPartyButton.isSelected()) {
                 if(!partyOpeningDate.toString().equals("")) {
-                   // if ((partyOpeningDate.getValue()).isAfter((partyClosingDate).getValue())) {
+                    // if ((partyOpeningDate.getValue()).isAfter((partyClosingDate).getValue())) {
                     //    throw new Exception("Data rozpoczęcia nie może być po dacie zakończenia");
                     //}
                     if(!isFirst) {
