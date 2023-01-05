@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a6aa2dd-4b2f-4bdb-9d6c-19ce207e89de" name="Changes" comment="Unversioned Files">
+    <list default="true" id="5a6aa2dd-4b2f-4bdb-9d6c-19ce207e89de" name="Changes" comment="Poprawki zeby bos sie wylogowal do login screena">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/partymanager_inzprog/Boss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/partymanager_inzprog/Boss.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/partymanager_inzprog/employeeMessages.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/partymanager_inzprog/employeeMessages.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +42,7 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2724138" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -91,7 +92,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672869983815</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Poprawki zeby bos sie wylogowal do login screena">
+      <created>1672870742894</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1672870742894</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -109,6 +117,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Zrobione:&#10;a) pracownik:&#10;- dodawanie imprezy do systemu (całe)&#10;- usuwanie imprezy z systemu (całe)&#10;- edycja danych imprezy (problem)&#10;- wysyłanie wiadomosci do szefa (tylko panel graficzny)&#10;- wylogowanie sie (całe)&#10;b) szef:&#10;- dodanie nowego pracownika do systemu (całę)&#10;- usunięcie pracownika z systemu (całe)&#10;- dodawanie imprezy do systemu (całe)&#10;- usuwanie imprezy z systemu (całe)&#10;- odpowiedz mailowa na pytania od pracownika (tylko panel graficzny)&#10;- wylogowanie się działa&#10;&#10;DO ZROBENIA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!&#10;- naprawienie ERROR MESSAGES, ZABEZPIECZENIE DAT przy edycji danych imprezy u pracownika&#10;- napisanie kodu do wysłania wiadomości do szefa od pracownika&#10;- napisanie kodu do odpowiadania na wiadomosci pracownikow z panelu szefa" />
     <MESSAGE value="Unversioned Files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Unversioned Files" />
+    <MESSAGE value="Poprawki zeby bos sie wylogowal do login screena" />
+    <option name="LAST_COMMIT_MESSAGE" value="Poprawki zeby bos sie wylogowal do login screena" />
   </component>
 </project>
