@@ -30,7 +30,7 @@ public class Main extends Application {
     }
     public void Close_Aplication(Stage stage) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Logout");
+        alert.setTitle("Exit");
         alert.setHeaderText("Za chwilę wyjdziesz z aplikacji!");
         alert.setContentText("Czy chcesz kontynuwać?");
 
