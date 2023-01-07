@@ -146,6 +146,10 @@ public class BossRemoveEmployee implements Initializable {
             psDelete = connection.prepareStatement("DELETE FROM users WHERE user_id = ?");
             psDelete.setString(1,currentValue.toString());
             psDelete.executeUpdate();
+
+            psDelete = connection.prepareStatement("DELETE FROM salaries WHERE user_id = ?");
+            psDelete.setString(1,currentValue.toString());
+            psDelete.executeUpdate();
         } catch(Exception e) {
             errorMessage.setText(e.getMessage());
         } finally {

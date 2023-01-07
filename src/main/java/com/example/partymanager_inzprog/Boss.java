@@ -31,6 +31,8 @@ public class Boss {
     private PasswordField password;
     @FXML
     private PasswordField confirmPassword;
+    @FXML
+    private TextField salaryTextField;
 
     @FXML
     private TextField partyName;
@@ -110,6 +112,14 @@ public class Boss {
         stage.setScene(scene);
         stage.show();
     }
+    public void switchToStatistics(javafx.event.ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("statistics.fxml"));
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void registerNewEmployee(javafx.event.ActionEvent actionEvent){
 
         try {
@@ -132,6 +142,15 @@ public class Boss {
             if(password.getText().equals("")) {
                 throw new Exception("Pole 'hasło' nie może być puste");
             }
+            if(salaryTextField.getText().equals("")) {
+                throw new Exception("Pole 'pensja' nie może być puste");
+            }
+
+            try {
+                double val = Double.parseDouble(salaryTextField.getText());
+            } catch (NumberFormatException e) {
+                throw new Exception("Pole 'pensja' musi być wartością typu double");
+            }
 
             // testing if inputted passwords are the same
             if(!password.getText().equals(confirmPassword.getText())) {
@@ -143,6 +162,7 @@ public class Boss {
             Connection connection = null;
             PreparedStatement psInsert = null;
             PreparedStatement psCheckUserExists = null;
+            PreparedStatement psSelect = null;
             ResultSet resultSet = null;
 
             try {
@@ -165,6 +185,16 @@ public class Boss {
                     psInsert.setString(5, login.getText());
                     psInsert.setString(6, password.getText());
                     psInsert.setString(7,"employee");
+                    psInsert.executeUpdate();
+
+                    psSelect = connection.prepareStatement("SELECT user_id FROM users WHERE id_number = ?");
+                    psSelect.setString(1, id_number.getText());
+                    resultSet = psSelect.executeQuery();
+
+                    psInsert = connection.prepareStatement("INSERT INTO salaries (user_id, salary) VALUES(?,?)");
+                    resultSet.next();
+                    psInsert.setString(1, Integer.toString(resultSet.getInt(1)));
+                    psInsert.setString(2,salaryTextField.getText());
                     psInsert.executeUpdate();
                 }
             } catch(Exception e) {
