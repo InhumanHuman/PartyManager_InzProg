@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="20.0" styleClass="VBox" stylesheets="@css/windows_elements_style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.partymanager_inzprog.EmployeeHelpDesk">
+   <children>
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@party_manager_logo.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="clientsEmail" promptText="e-mail klienta">
+         <VBox.margin>
+            <Insets left="150.0" right="150.0" />
+         </VBox.margin>
+      </TextField>
+      <TextField fx:id="messageTopic" promptText="temat wiadomości">
+         <VBox.margin>
+            <Insets left="150.0" right="150.0" />
+         </VBox.margin>
+      </TextField>
+      <Label fx:id="errorMessage" textFill="RED" />
+      <Button mnemonicParsing="false" onAction="#sendMessage" text="Napisz wiadomość" />
+      <Button mnemonicParsing="false" onAction="#goBackToEmployee" text="Anuluj" />
+   </children>
+</VBox>

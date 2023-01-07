@@ -18,6 +18,7 @@ public class Main extends Application {
             stage.setScene(scene);
             Image icon = new Image("file:party_popper.png");
             stage.getIcons().add(icon);
+            stage.setTitle("Party manager");
             stage.show();
 
             stage.setOnCloseRequest(windowEvent -> {
