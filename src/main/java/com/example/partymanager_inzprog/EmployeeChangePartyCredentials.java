@@ -42,7 +42,7 @@ public class EmployeeChangePartyCredentials implements Initializable {
     @FXML
     private Label errorMessage;
     @FXML
-    private TableView contentTable;
+    private TableView<PartyData> contentTable;
 
     @FXML
     RadioButton partyNameButton;
@@ -168,10 +168,38 @@ public class EmployeeChangePartyCredentials implements Initializable {
         PreparedStatement psChange = null;
         Integer currentValue = (Integer)idChoiceBox.getValue();
 
+        if(idChoiceBox.getValue() == null) {
+            errorMessage.setText("Nie wybrano żadnej imprezy.");
+            return;
+        }
+
+        if(startPartyButton.isSelected()) {
+            if(endPartyButton.isSelected()) {
+                if((partyClosingDate.getValue()).isBefore((partyOpeningDate).getValue())) {
+                    errorMessage.setText("Data zakończenia nie może być przed datą rozpoczęcia");
+                    return;
+                }
+            } else {
+                if((contentTable.getItems().get(currentValue).getPartyClosingDate()).isBefore((partyOpeningDate).getValue())) {
+                    errorMessage.setText("Data zakończenia nie może być przed datą rozpoczęcia");
+                    return;
+                }
+            }
+        }
+
+        if(endPartyButton.isSelected()) {
+            if((contentTable.getItems().get(currentValue).getPartyOpeningDate()).isAfter((partyClosingDate).getValue())) {
+                errorMessage.setText("Data zakończenia nie może być przed datą rozpoczęcia");
+                return;
+            }
+        }
+
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/party_management_database", "root","root");
             String updateStatement = "UPDATE parties SET";
             //check all fields
+
+
             if(partyNameButton.isSelected()) {
                 if(!partyName.getText().equals("")) {
                     if(!isFirst) {
@@ -254,7 +282,7 @@ public class EmployeeChangePartyCredentials implements Initializable {
             updateStatement = updateStatement + " WHERE party_id = " + currentValue;
             psChange = connection.prepareStatement(updateStatement);
             psChange.executeUpdate();
-            throw new Exception("Zmieniono dane imprezy.");
+            //throw new Exception("Zmieniono dane imprezy.");
 
         } catch(Exception e) {
             errorMessage.setText(e.getMessage());
@@ -275,7 +303,7 @@ public class EmployeeChangePartyCredentials implements Initializable {
             }
         }
         try {
-            this.switchToEmployeeRemovePartyScreen(actionEvent);
+            this.goBackToEmployeeScreen(actionEvent);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

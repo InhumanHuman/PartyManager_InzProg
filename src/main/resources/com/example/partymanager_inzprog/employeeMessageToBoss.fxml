@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="342.0" prefWidth="600.0" spacing="10.0" styleClass="VBox" stylesheets="@css/windows_elements_style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.partymanager_inzprog.EmployeeSendMessageToBoss">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="342.0" prefWidth="600.0" spacing="10.0" styleClass="VBox" stylesheets="@css/windows_elements_style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.partymanager_inzprog.EmployeeSendMessageToBoss">
    <children>
       <Label alignment="CENTER" styleClass="Text" text="Uzyskaj pomoc">
          <font>
@@ -36,7 +36,7 @@
                   <Label fx:id="errorMessage" textFill="RED" />
                   <HBox alignment="CENTER" spacing="20.0">
                      <children>
-                        <Button fx:id="sendButton" mnemonicParsing="false" text="Wyślij" />
+                        <Button fx:id="sendButton" mnemonicParsing="false" onAction="#sendMail" text="Wyślij" />
                         <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#goBackToEmployeeScreen" text="Anuluj" />
                      </children>
                   </HBox>

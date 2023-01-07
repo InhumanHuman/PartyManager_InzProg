@@ -8,9 +8,9 @@ public class MessagesData {
     private String firstname;
     private String lastname;
     private String e_mail;
-    private Integer id_number;
+    private String status;
 
-    public MessagesData(Integer id_wiadomosci, String temat, String tresc_wiadomosci, Integer user_id, String firstname, String lastname, String e_mail, Integer id_number) {
+    public MessagesData(Integer id_wiadomosci, String temat, String tresc_wiadomosci, Integer user_id, String firstname, String lastname, String e_mail, String status) {
         this.id_wiadomosci = id_wiadomosci;
         this.temat = temat;
         this.tresc_wiadomosci = tresc_wiadomosci;
@@ -18,7 +18,7 @@ public class MessagesData {
         this.firstname = firstname;
         this.lastname = lastname;
         this.e_mail = e_mail;
-        this.id_number = id_number;
+        this.status = status;
     }
 
     public Integer getId_wiadomosci() {
@@ -42,7 +42,7 @@ public class MessagesData {
     public String getE_mail() {
         return e_mail;
     }
-    public Integer getId_number() {
-        return id_number;
+    public String getStatus() {
+        return status;
     }
 }

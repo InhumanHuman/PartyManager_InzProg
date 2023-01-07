@@ -49,10 +49,6 @@ public class Boss {
 
     @FXML
     private Label errorMessage;
-    @FXML
-    private TextArea userMessage;
-    @FXML
-    private TextField messageTopic;
 
     public void switchToLoginScreen(javafx.event.ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
