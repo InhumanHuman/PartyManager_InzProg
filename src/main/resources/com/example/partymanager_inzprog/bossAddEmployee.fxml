@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" minHeight="530.0" minWidth="350.0" spacing="20.0" styleClass="VBox" stylesheets="@css/windows_elements_style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.partymanager_inzprog.Boss">
+<VBox alignment="CENTER" minHeight="530.0" minWidth="350.0" spacing="20.0" styleClass="VBox" stylesheets="@css/windows_elements_style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.partymanager_inzprog.Boss">
    <children>
       <Label alignment="CENTER" text="Podaj dane pracownika " textAlignment="CENTER">
          <font>
@@ -37,7 +37,7 @@
       <Label fx:id="errorMessage" textAlignment="CENTER" textFill="RED" />
       <HBox alignment="CENTER" spacing="10.0">
          <children>
-            <Button fx:id="registerButton" alignment="CENTER" mnemonicParsing="false" onAction="#registerNewEmployee" text="Zarejestruj się" />
+            <Button fx:id="registerButton" alignment="CENTER" mnemonicParsing="false" onAction="#registerNewEmployee" text="Dodaj pracownika" />
             <Button fx:id="cancelRegisterButton" alignment="CENTER" mnemonicParsing="false" onAction="#goBackToBossScreen" text="Anuluj" />
          </children>
          <padding>

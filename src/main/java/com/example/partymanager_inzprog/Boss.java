@@ -119,10 +119,22 @@ public class Boss {
         stage.setScene(scene);
         stage.show();
     }
+    public boolean askBeforeAddEmployee(){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Dodanie nowego pracownika");
+        alert.setHeaderText("Za chwilę dodasz nowego pracownika do systemu.");
+        alert.setContentText("Czy na pewno chcesz kontynuować?");
 
+        if(alert.showAndWait().get() == ButtonType.OK) {
+            return true;
+        }
+        return false;
+    }
     public void registerNewEmployee(javafx.event.ActionEvent actionEvent){
-
         try {
+            if(!askBeforeAddEmployee()) {
+                return;
+            }
             // testing if input fields are not empty
             if(firstname.getText().equals("")) {
                 throw new Exception("Pole 'imię' nie może być puste");
@@ -235,8 +247,22 @@ public class Boss {
             e.printStackTrace();
         }
     }
+    public boolean askBeforeAddParty(){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Dodanie nowej imprezy");
+        alert.setHeaderText("Za chwilę dodasz nową imprezę do systemu.");
+        alert.setContentText("Czy na pewno chcesz kontynuować?");
+
+        if(alert.showAndWait().get() == ButtonType.OK) {
+            return true;
+        }
+        return false;
+    }
     public void registerNewParty(javafx.event.ActionEvent actionEvent) throws IOException {
         try {
+            if(!askBeforeAddParty()) {
+                return;
+            }
             // testing if input fields are not empty
             if (partyName.equals("")) {
                 throw new Exception("Pole 'nazwa imprezy' nie może być puste");

@@ -46,7 +46,6 @@ public class Employee {
         stage.setScene(scene);
         stage.show();
     }
-
     public void switchToHelpDesk(javafx.event.ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("employeeHelpDesk.fxml"));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -54,7 +53,6 @@ public class Employee {
         stage.setScene(scene);
         stage.show();
     }
-
     public void goBackToEmployeeScreen(javafx.event.ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("employee.fxml"));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -94,13 +92,6 @@ public class Employee {
         stage.setScene(scene);
         stage.show();
     }
-    public void switchToMessagesScreen(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("employeeMessages.fxml"));
-        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
     public void switchToMessageToBossScreen(javafx.event.ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("employeeMessageToBoss.fxml"));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -108,8 +99,22 @@ public class Employee {
         stage.setScene(scene);
         stage.show();
     }
+    public boolean askBeforeAddParty(){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Dodanie nowej imprezy");
+        alert.setHeaderText("Za chwilę dodasz nową imprezę do systemu.");
+        alert.setContentText("Czy na pewno chcesz kontynuować?");
+
+        if(alert.showAndWait().get() == ButtonType.OK) {
+            return true;
+        }
+        return false;
+    }
     public void registerNewParty(javafx.event.ActionEvent actionEvent){
         try {
+            if(!askBeforeAddParty()) {
+                return;
+            }
             // testing if input fields are not empty
             if (partyName.equals("")) {
                 throw new Exception("Pole 'nazwa imprezy' nie może być puste");
